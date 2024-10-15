@@ -2,8 +2,8 @@ name: leigod auto pause action
 on:
   push:
   schedule:
-   # 定时任务，北京时间3点执行任务 19 + 8 = 27 % 24 = 3
-    - cron: '0 19 * * *'
+    # 定时任务，北京时间3点执行任务 19 + 8 = 27 % 24 = 3
+    - cron: "0 19 * * *"
 
 jobs:
   build:
@@ -16,7 +16,7 @@ jobs:
           node-version: 10.x
       - name: npm install
         run: |
-          npm install -g pnpm && pnpm install
+          npm install
       - name: run script
         run: |
           node index.js
