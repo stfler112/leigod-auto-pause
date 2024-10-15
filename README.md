@@ -3,6 +3,6 @@
 ## Usage
 
 ```
-pnpm i
+npm i
 node index.js
 ```
