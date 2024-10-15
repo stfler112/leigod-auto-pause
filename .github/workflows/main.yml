@@ -1,5 +1,4 @@
-name: 雷神自动停止加速
-
+name: leigod auto pause action
 on:
   push:
   schedule:
