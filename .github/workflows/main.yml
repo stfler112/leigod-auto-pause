@@ -1,0 +1,26 @@
+name: 雷神自动停止加速
+
+on:
+  push:
+  schedule:
+   # 定时任务，北京时间3点执行任务 19 + 8 = 27 % 24 = 3
+    - cron: '0 19 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js 10.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+      - name: npm install
+        run: |
+          npm install -g pnpm && pnpm install
+      - name: run script
+        run: |
+          node index.js
+        env:
+          USERNAME_ARR: ${{ secrets.USERNAME_ARR }}
+          PASSWORD_ARR: ${{ secrets.PASSWORD_ARR }}
