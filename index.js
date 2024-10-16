@@ -2,21 +2,19 @@ import 'dotenv/config';
 import { LeigodAPI } from './leigod.js';
 import * as core from '@actions/core';
 
-function hidePhoneNumber(tel) {
-  if (!tel) return '';
-  return tel.substring(0, 3) + '****' + tel.substr(tel.length - 4) || '';
-}
-
 const api = new LeigodAPI();
 
-const usernames = process.env.USERNAME_ARR.split(',');
-const passwords = process.env.PASSWORD_ARR.split(',');
+const usernamesStr = process.env.USERNAME_ARR;
+const passwordsStr = process.env.PASSWORD_ARR;
 
-if (!usernames || !passwords) {
+if (!usernamesStr || !passwordsStr) {
   core.setFailed(
     "Please set USERNAME_ARR and PASSWORD_ARR in envs (split multi user by ',')",
   );
 }
+
+const usernames = usernamesStr.split(',');
+const passwords = passwordsStr.split(',');
 
 const users = [];
 
@@ -26,8 +24,13 @@ for (let idx = 0; idx < usernames.length; idx++) {
   users.push({ username, password });
 }
 
+function hide(str) {
+  if (!str) return '';
+  return str.substring(0, 3) + '****' + str.substr(str.length - 4) || '';
+}
+
 async function pause(username, password) {
-  const hideName = hidePhoneNumber(username);
+  const hideName = hide(username);
   if (username && password) {
     try {
       core.info(hideName + ': Logging in');

@@ -29,7 +29,7 @@ PASSWORD_ARR="password1,password2"
 
 ## Run locally
 
-修改.env 文件的 `USERNAME_ARR` 和 `PASSWORD_ARR`
+修改 `.env` 文件的 `USERNAME_ARR` 和 `PASSWORD_ARR`
 
 ```
 npm i
