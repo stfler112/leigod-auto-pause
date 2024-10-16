@@ -3,10 +3,10 @@ on:
   push:
   schedule:
     # 定时任务，北京时间3点执行任务 19 + 8 = 27 % 24 = 3
-    - cron: "0 19 * * *"
+    - cron: '0 19 * * *'
 
 jobs:
-  build:
+  pause:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -14,10 +14,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20.x
-      - name: npm install
+      - name: Run npm install
         run: |
           npm install
-      - name: run script
+      - name: Run node index.js
         run: |
           node index.js
         env:
