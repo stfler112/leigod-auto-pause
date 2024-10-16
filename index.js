@@ -2,6 +2,10 @@ import 'dotenv/config';
 import { LeigodAPI } from './leigod.js';
 import * as core from '@actions/core';
 
+function hidePhoneNumber(tel) {
+  return tel.substring(0, 3) + '****' + tel.substr(tel.length - 4);
+}
+
 const api = new LeigodAPI();
 
 const usernames = process.env.USERNAME_ARR.split(',');
@@ -24,23 +28,24 @@ for (let idx = 0; idx < usernames.length; idx++) {
 async function pause(username, password) {
   if (username && password) {
     try {
-      core.info(username + ': Logging in');
+      const hideName = hidePhoneNumber(username);
+      core.info(hideName + ': Logging in');
       await api.login(username, password);
       let isPaused = await api.isTimePaused();
-      core.info(username + ': Getting pause status: ' + isPaused);
+      core.info(hideName + ': Getting pause status: ' + isPaused);
       if (!isPaused) {
-        core.warning(username + ': Time is not paused, trying to pause time');
+        core.warning(hideName + ': Time is not paused, trying to pause time');
         await api.pauseTime();
         isPaused = await api.isTimePaused();
-        core.info(username + ': Getting pause status again: ' + isPaused);
+        core.info(hideName + ': Getting pause status again: ' + isPaused);
       }
     } catch (error) {
-      core.error(username + ': ' + error);
+      core.error(hideName + ': ' + error);
       return false;
     }
   } else {
     core.error(
-      username + ': The username or password is empty, please check envs',
+      hideName + ': The username or password is empty, please check envs',
     );
     return false;
   }
