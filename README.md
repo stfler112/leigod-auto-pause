@@ -1,6 +1,6 @@
 # leigod-auto-pause
 
-利用雷神加速器api（包含了登陆接口的签名认证逻辑）以及Github的Actions定时自动暂停时常
+利用雷神加速器api（包含了登陆接口的签名认证逻辑）以及Github的Actions定时自动暂停时长
 
 ## Usage
 
