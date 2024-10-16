@@ -3,7 +3,8 @@ import { LeigodAPI } from './leigod.js';
 import * as core from '@actions/core';
 
 function hidePhoneNumber(tel) {
-  return tel.substring(0, 3) + '****' + tel.substr(tel.length - 4);
+  if (!tel) return '';
+  return tel.substring(0, 3) + '****' + tel.substr(tel.length - 4) || '';
 }
 
 const api = new LeigodAPI();
@@ -26,9 +27,9 @@ for (let idx = 0; idx < usernames.length; idx++) {
 }
 
 async function pause(username, password) {
+  const hideName = hidePhoneNumber(username);
   if (username && password) {
     try {
-      const hideName = hidePhoneNumber(username);
       core.info(hideName + ': Logging in');
       await api.login(username, password);
       let isPaused = await api.isTimePaused();
