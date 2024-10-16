@@ -99,7 +99,7 @@ export class LeigodAPI {
 
   /**
    *
-   * return is paused as bool
+   * @return {boolean} is paused as bool
    */
   async isTimePaused() {
     const info = await this.getUserInfo();
