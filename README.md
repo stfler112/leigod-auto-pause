@@ -4,6 +4,9 @@
 
 ## Usage
 
+> [!IMPORTANT]
+> 确保你的隐私安全，请不要上传任何带有账号密码信息的文件到项目中，包括`.env`, `.github/workflows/main.yml`
+
 ### Set secrets
 
 Fork 项目之后，设置 Actions 的 secrets
@@ -19,9 +22,6 @@ PASSWORD_ARR="password1,password2"
 
 ![image](https://github.com/user-attachments/assets/d824c236-af23-482f-afd0-875baba0608c)
 
-
-> [!IMPORTANT]
-> 不要上传任何带有账号密码信息的文件到项目中，包括`.env`, `.github/workflows/main.yml`
 
 ### Run actions
 
