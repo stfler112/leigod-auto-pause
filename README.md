@@ -19,6 +19,10 @@ PASSWORD_ARR="password1,password2"
 
 ![image](https://github.com/user-attachments/assets/d824c236-af23-482f-afd0-875baba0608c)
 
+
+> [!IMPORTANT]
+> 不要上传任何带有账号密码信息的文件到项目中，包括`.env`, `.github/workflows/main.yml`
+
 ### Run actions
 
 可以在 Actions 里手动触发，默认是北京时间凌晨 3 点触发
