@@ -34,20 +34,19 @@ export class LeigodAPI {
   constructor(token = null) {
     this.token = token;
     this.session = axios.create({
-      baseURL: 'https://webapi.leigod.com/api',
+      baseURL: 'https://webapi.leigod.com',
       headers: {
-        'User-Agent':
-          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36 Edg/118.0.0.0',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-        Connection: 'keep-alive',
-        Accept: 'application/json, text/javascript, */*; q=0.01',
-        'Accept-Encoding': 'gzip, deflate, br',
-        'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
-        DNT: '1',
-        Referer: 'https://www.legod.com/',
-        'Sec-Fetch-Dest': 'empty',
-        'Sec-Fetch-Mode': 'cors',
-        'Sec-Fetch-Site': 'same-site',
+        accept: 'application/json, text/plain, */*',
+        'accept-language': 'en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7',
+        'cache-control': 'no-cache',
+        'content-type': 'application/json',
+        pragma: 'no-cache',
+        priority: 'u=1, i',
+        'sec-fetch-dest': 'empty',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-site': 'same-site',
+        Referer: 'https://www.leigod.com/',
+        'Referrer-Policy': 'strict-origin-when-cross-origin',
       },
     });
   }
@@ -60,16 +59,16 @@ export class LeigodAPI {
    */
   async login(username, password) {
     const response = await this.session.post(
-      '/auth/login/v1',
+      '/wap/login/bind/v1',
       sign({
+        code: '',
         country_code: 86,
-        lang: 'zh_CN',
-        mobile_num: username,
-        os_type: 4,
+        lang: 'en',
+        os_type: 5,
         password: generateMD5(password),
+        src_channel: 'guanwang',
         region_code: 1,
         user_type: '0',
-        src_channel: 'guanwang',
         username: username,
       }),
     );
@@ -82,7 +81,7 @@ export class LeigodAPI {
   }
 
   async getUserInfo() {
-    const response = await this.session.post('/user/info', {
+    const response = await this.session.post('/api/user/info', {
       account_token: this.token,
       lang: 'zh_CN',
     });
@@ -112,7 +111,7 @@ export class LeigodAPI {
   }
 
   async pauseTime() {
-    const response = await this.session.post('/user/pause', {
+    const response = await this.session.post('/api/user/pause', {
       account_token: this.token,
       lang: 'zh_CN',
     });
@@ -124,7 +123,7 @@ export class LeigodAPI {
   }
 
   async recoverTime() {
-    const response = await this.session.post('/user/recover', {
+    const response = await this.session.post('/api/user/recover', {
       account_token: this.token,
       lang: 'zh_CN',
     });
