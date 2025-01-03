@@ -22,10 +22,20 @@ PASSWORD_ARR="password1,password2"
 
 ![image](https://github.com/user-attachments/assets/d824c236-af23-482f-afd0-875baba0608c)
 
+### Enable actions
+
+Fork 的项目默认Actions是禁用的，需要手动打开
+
+![image](https://github.com/user-attachments/assets/9e96acf1-c218-4da5-9105-02e4fc254fb8)
+
+![image](https://github.com/user-attachments/assets/7f780be8-3f51-40b0-972e-3972810f158a)
 
 ### Run actions
 
 可以在 Actions 里手动触发，默认是北京时间凌晨 3 点触发
+
+![image](https://github.com/user-attachments/assets/ab599689-7761-4f9f-9260-7772ff0ffbd6)
+
 
 如需修改 schedule 时间，请修改`.github/workflows/main.yml`文件
 
