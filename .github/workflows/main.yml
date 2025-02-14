@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     # 定时任务，北京时间3点执行任务 19 + 8 = 27 % 24 = 3
-    - cron: '0 19 * * *'
+    - cron: '0 6 * * *'
 
 jobs:
   pause:
